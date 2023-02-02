@@ -36,18 +36,19 @@ struct TransactionRow: View {
                     .opacity(0.7)
                 
                 //Mark: Transaction Date
-                
-                Text(transaction.dateParsed, format: .dateTime.year().month().day())
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+                Text(transaction.date)
+               
             }
             Spacer()
             // MARK Transaction Amount
             Text(transaction.signedAmount, format: .currency(code: "USD"))
                 .bold()
-                .foregroundColor(transaction.type == TransactionType.credit.rawValue ? Color.text : .primary)
+                .padding(.trailing)
+            
+                
         }
-        .padding([.top, .bottom], 8)
+        
+        .padding([.top, .bottom, .leading], 8)
     }
 }
 

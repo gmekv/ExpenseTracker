@@ -10,17 +10,38 @@ import Combine
 import Collections
 
 typealias TransactionGroup = OrderedDictionary<String, [Transaction] >
-typealias TransactionPrefixSum = [(String, Double)]
 
 
 final class TransactionListViewModel: ObservableObject {
+    
+    //MARK: New Expense Properties
+//    @Published var addNewExpense: Bool = false
+//    @Published var amount: String = ""
+//    @Published var type: ExpenseType = .all
+//    @Published var 
+    
+    
+    
+    @Published  var sortedTransactions: [Transaction] = []
 
-    @Published var transactions: [Transaction] = []
+    @Published var transactions: [Transaction] = [] {
+        didSet {
+            self.sortedTransactions = self.transactions.sorted {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                let date0 = dateFormatter.date(from: $0.date) ?? Date()
+                let date1 = dateFormatter.date(from: $1.date) ?? Date()
+                return date0 > date1
+            }
+        }
+    }
+
     
     private var cancellables = Set<AnyCancellable> ()
     
     init() {
         getTransactions()
+        print(sortedTransactions)
     }
     
     
@@ -62,15 +83,11 @@ final class TransactionListViewModel: ObservableObject {
             }
             .store(in: &cancellables)
             }
-    func groupTransactionsBymonth() -> TransactionGroup {
-        guard !transactions.isEmpty else { return [:] }
-        let sortedTransactions = transactions.sorted { $0.dateParsed < $1.dateParsed }
-        let groupedTranasctions =  TransactionGroup(grouping: sortedTransactions) { "\($0.dateParsed.formatted(.dateTime.year()))-\($0.month)" }
-        return groupedTranasctions
-    }
 
+
+  
     
-    
+
     
 //    func accumulateTransactions() -> TransactionPrefixSum {
 //        

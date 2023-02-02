@@ -10,7 +10,7 @@ import SwiftUIFontIcon
 
 struct Transaction: Codable, Identifiable, Hashable {
     let id: Int
-    let date : String
+    var date : String
     let institution: String
     let account: String
     let merchant: String
@@ -23,30 +23,31 @@ struct Transaction: Codable, Identifiable, Hashable {
     var isExpense: Bool
     var isEdited: Bool
     var icon: FontAwesomeCode {
+        
         if  let category = Category.all.first(where: {$0.id == categoryId}) {
                 return category.icon
     }
     return .question
 }
     
-    var dateParsed: Date {
-        date.dateParse()
-    }
+    
     var signedAmount: Double {
-        return type == TransactionType.credit.rawValue ? amount : -amount
-    }
-    
-    var month: String {
-        dateParsed.formatted(.dateTime.year().month(.wide))
+        return isExpense == true ? amount : -amount
     }
     
     
-}
+    
     enum TransactionType: String {
-      case debit = "debit"
+        case debit = "debit"
         case credit = "credit"
     }
-
+    var dateAsDate: Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            return dateFormatter.date(from: date) ?? Date()
+        }
+    
+}
 struct Category {
     let id: Int
     let name: String
@@ -109,3 +110,5 @@ extension Category {
     ]
     static let all: [Category] = categories + subcategories
 }
+
+

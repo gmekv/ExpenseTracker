@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftUICharts
 
 struct ContentView: View {
+   @State var showsheet = false
+    
     var demoData: [Double] = [8, 2, 4, 6, 12, 9, 2]
 
     var body: some View {
@@ -20,13 +22,24 @@ struct ContentView: View {
                         .font(.title2)
                     // Mark Chart
                     
-                    NavigationLink("new") {
-                        NewexpenseView()
+                    
+                   
+                    
+                    VStack {
+                        RecentTransactionList()
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            showsheet.toggle()
+                        }) {
+                            Text("Button")
+                        }
+                        .padding()
+                        .background(Color.primary)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
                     }
-                    
-                // Mark: Transaction list
-                    RecentTransactionList()
-                    
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -42,9 +55,14 @@ struct ContentView: View {
                 }
                 
             }
+            
         }
         .navigationSplitViewStyle(.balanced)
+        .sheet(isPresented: $showsheet, onDismiss: nil) {
+            NewexpenseView()
+        }
     }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {
