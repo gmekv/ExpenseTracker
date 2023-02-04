@@ -33,7 +33,7 @@ struct ContentView: View {
                         Button(action: {
                             showsheet.toggle()
                         }) {
-                            Text("Button")
+                            Text("Add New Transations 💸")
                         }
                         .padding()
                         .background(Color.primary)
@@ -69,7 +69,7 @@ struct ContentView_Previews: PreviewProvider {
     
     static let transactionListVM: TransactionListViewModel = {
         let transactionListVM = TransactionListViewModel()
-        transactionListVM.transactions = transactionListPreviewData
+        transactionListVM.sortedTransactions = transactionListPreviewData
         return transactionListVM } ()
     static var previews: some View {
         Group {
