@@ -10,7 +10,8 @@ import SwiftUI
 struct RecentTransactionList: View {
     
     @EnvironmentObject var transactionListVM: TransactionListViewModel
-    
+    @State var showsheet = false
+
     var body: some View {
     
             VStack {
@@ -32,17 +33,18 @@ struct RecentTransactionList: View {
                     }
                     
                 }
-                .padding(.top)
                 
                 
                 
                 // MARK: Recent Transaction List
-                
-                ForEach(Array(transactionListVM.sortedTransactions.prefix(5).enumerated()), id: \.element) { index,
-                    transaction in TransactionRow(transaction: transaction)
+                VStack{
+                    ForEach(Array(transactionListVM.sortedTransactions.prefix(4).enumerated()), id: \.element) { index,
+                        transaction in TransactionRow(transaction: transaction)
+                        
+                        Divider()
+                            .opacity(index == 4 ? 0 : 1)
+                    }
                     
-                    Divider()
-                        .opacity(index == 4 ? 0 : 1)
                 }
                 
                 

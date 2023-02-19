@@ -11,21 +11,31 @@ struct TransactionList: View {
     @EnvironmentObject var transactionListVm: TransactionListViewModel
     
     var body: some View {
-     
-        ScrollView {
-            VStack {
-                
-                
-                ForEach(transactionListVm.sortedTransactions) { transaction in
-                    TransactionRow(transaction: transaction)
-                }
-                //                ForEach(Array(transactionListVm.sortedTransactions.prefix(100).enumerated()), id: \.element) { index,
-                //                    transaction in TransactionRow(transaction: transaction)
-                //                }}
-            }
+        VStack {
+            //            List {
+            //                // MARK Transaction Groups
+            //                ForEach(Array(transactionListVm.groupTransactionsBymonth()), id: \.key) {
+            //                    month, transactions in
+            //                    Section {
+            //                        // Transaction List
+            //                        ForEach(transactions) { transaction in
+            //                            TransactionRow(transaction: transaction)
+            //                        }
+            //                    } header: {
+            //                        // Transaction Month
+            //                        Text(month)
+            //                    }
+            //
+            //
+            //                }
+            //            }
+            //            .listStyle(.plain)
+            //            }
+            //            .navigationTitle("Transactions")
+            //            .navigationBarTitleDisplayMode(.inline)
         }
-        .background(Color.background)
-    }}
+        }
+    }
      
 struct TransactionList_Previews: PreviewProvider {
     static let transactionListVM: TransactionListViewModel = {

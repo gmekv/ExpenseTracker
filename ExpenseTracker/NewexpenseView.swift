@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewexpenseView: View {
     @EnvironmentObject var transactionListVM: TransactionListViewModel
-    
+    @Environment(\.presentationMode) var presentationMode
     @State private var selectedDate = Date()
     @State private var itsexpense = false
     @State private var itsdeposit = false
@@ -123,7 +123,8 @@ extension NewexpenseView {
     private var datebac: some View {
         HStack {
             Label {
-                DatePicker("Select date", selection: $selectedDate, in: minDate...maxDate, displayedComponents: .date)
+                DatePicker("Select date", selection: $selectedDate, in: minDate...maxDate,displayedComponents: .date)
+
                     .padding(.trailing, 75)
                 
             } icon: {
@@ -141,6 +142,7 @@ extension NewexpenseView {
             if newamount == 0.0 {
                    // Show an alert for missing income/expense choice
                 self.showingAmountAlert = true
+                
 
             } else if itsexpense == false && itsdeposit == false {
                 self.showingChoiceAlert = true
@@ -153,6 +155,7 @@ extension NewexpenseView {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM/dd/yyyy"
                     let dateString = dateFormatter.string(from: selectedDate)
+                
                     let newTransaction = Transaction(
                         id: transactionListVM.sortedTransactions.count + 1,
                         date: dateString,
@@ -171,8 +174,10 @@ extension NewexpenseView {
                     
                     // Append the new transaction to the transactions array
                     transactionListVM.transactions.append(newTransaction)
-                    print("added")
-                    print(newTransaction)
+
+                   
+                   // Dismiss the sheet
+                                 self.presentationMode.wrappedValue.dismiss()
                 }
             }) {
                 Text("Add Transaction")

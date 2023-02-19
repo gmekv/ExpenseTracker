@@ -32,7 +32,7 @@ struct Transaction: Codable, Identifiable, Hashable {
     
     
     var signedAmount: Double {
-        return isExpense == true ? amount : -amount
+        return isExpense == true ? -amount : amount
     }
     
     
@@ -46,7 +46,9 @@ struct Transaction: Codable, Identifiable, Hashable {
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             return dateFormatter.date(from: date) ?? Date()
         }
-    
+    var month: String {
+        dateAsDate.formatted(.dateTime.year().month(.wide))
+    }
 }
 struct Category {
     let id: Int
