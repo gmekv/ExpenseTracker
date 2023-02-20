@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftUICharts
 
 struct ContentView: View {
     @State var showsheet = false
@@ -27,21 +26,13 @@ struct ContentView: View {
                                 .font(.title2)
                             
                             
-                            // Mark Chart
-                            ZStack {
-                                
-                                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                    .fill(.linearGradient(colors: [Color.blue, Color.white, Color.background], startPoint: .topLeading, endPoint: .bottom))
-                                    .opacity(0.5)
-                                    .frame(height: 220)
-                                VStack {
-                                    Text(transactionListVm.currentMonthDateString())
-                                        .foregroundColor(.black)
-                                    Text(String(format: "$%.2f", transactionListVm.getTotalForCurrentMonth()))
-
-                                }}
+                            // Mark balance card
+                        
+                             CardView()
+                            
                             VStack {
-                                RecentTransactionList()
+                                // Mark recent transactions
+                                RecentTransactionListView()
                                 
                             }
                         }
@@ -51,7 +42,7 @@ struct ContentView: View {
                 .background(Color.background).edgesIgnoringSafeArea(.bottom)
                 
             }
-            
+            //Mark add new transaction
             Button(action: {
                 self.showsheet.toggle()
             }) {

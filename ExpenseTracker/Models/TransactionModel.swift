@@ -49,6 +49,9 @@ struct Transaction: Codable, Identifiable, Hashable {
     var month: String {
         dateAsDate.formatted(.dateTime.year().month(.wide))
     }
+    var dateParsed: Date {
+        date.dateParse()
+    }
 }
 struct Category {
     let id: Int

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RecentTransactionList: View {
+struct RecentTransactionListView: View {
     
     @EnvironmentObject var transactionListVM: TransactionListViewModel
     @State var showsheet = false
@@ -23,7 +23,7 @@ struct RecentTransactionList: View {
                     
                     //MARK header link
                     NavigationLink {
-                        TransactionList()
+                        TransactionListView()
                     } label: {
                         HStack(spacing: 4) {
                             Text("See all")
@@ -39,7 +39,7 @@ struct RecentTransactionList: View {
                 // MARK: Recent Transaction List
                 VStack{
                     ForEach(Array(transactionListVM.sortedTransactions.prefix(4).enumerated()), id: \.element) { index,
-                        transaction in TransactionRow(transaction: transaction)
+                        transaction in TransactionRowView(transaction: transaction)
                         
                         Divider()
                             .opacity(index == 4 ? 0 : 1)
@@ -67,10 +67,10 @@ struct RecentTransactionList_Previews: PreviewProvider {
          
     }()
     static var previews: some View {
-        RecentTransactionList()
+        RecentTransactionListView()
             .environmentObject(transactionListVM)
 
-        RecentTransactionList()
+        RecentTransactionListView()
             .preferredColorScheme(.dark)
             .environmentObject(transactionListVM)
     }

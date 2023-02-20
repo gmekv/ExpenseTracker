@@ -22,8 +22,9 @@ final class TransactionListViewModel: ObservableObject {
     
     // Mark: Chart date properties
     
-    var startDate: Date = Date()
-     var endDate: Date = Date()
+    @Published var monthlyrevenue = 0.0
+    @Published var monthlyexpense = 0.0
+
     @Published var currentMonthStartDate: Date = Date()
     
     
@@ -63,7 +64,6 @@ final class TransactionListViewModel: ObservableObject {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month], from: Date())
        
-        self.startDate = calendar.date(from: calendar.dateComponents([.year, .month], from: startDate))!
 
         currentMonthStartDate = calendar.date(from: components)!
       
@@ -122,11 +122,14 @@ final class TransactionListViewModel: ObservableObject {
         
         return startDateString + " - " + endDateString
     }
+   
 
-    func getTotalForCurrentMonth() -> Double {
+
+
+    func getExpenseTransactionsForCurrentMonth() -> [Transaction] {
         let currentMonth = Calendar.current.component(.month, from: Date())
         let currentYear = Calendar.current.component(.year, from: Date())
-        var totalAmount = 0.0
+        var expenseTransactions: [Transaction] = []
 
         for transaction in sortedTransactions {
             let dateFormatter = DateFormatter()
@@ -134,70 +137,59 @@ final class TransactionListViewModel: ObservableObject {
             if let transactionDate = dateFormatter.date(from: transaction.date) {
                 let transactionMonth = Calendar.current.component(.month, from: transactionDate)
                 let transactionYear = Calendar.current.component(.year, from: transactionDate)
-                if transactionMonth == currentMonth && transactionYear == currentYear {
-                    totalAmount += transaction.signedAmount
+                if transactionMonth == currentMonth && transactionYear == currentYear && transaction.isExpense {
+                    expenseTransactions.append(transaction)
                 } else if transactionMonth < currentMonth || transactionYear < currentYear {
                     break
                 }
             }
         }
 
-        return totalAmount
+        return expenseTransactions
+    }
+    func getIncomeTransactionsForCurrentMonth() -> [Transaction] {
+        let currentMonth = Calendar.current.component(.month, from: Date())
+        let currentYear = Calendar.current.component(.year, from: Date())
+        var incomeTransactions: [Transaction] = []
+
+        for transaction in sortedTransactions {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            if let transactionDate = dateFormatter.date(from: transaction.date) {
+                let transactionMonth = Calendar.current.component(.month, from: transactionDate)
+                let transactionYear = Calendar.current.component(.year, from: transactionDate)
+                if transactionMonth == currentMonth && transactionYear == currentYear && !transaction.isExpense {
+                    incomeTransactions.append(transaction)
+                } else if transactionMonth < currentMonth || transactionYear < currentYear {
+                    break
+                }
+            }
+        }
+
+        return incomeTransactions
+    }
+    func getTotalExpenseForCurrentMonth() -> Double {
+        let expenseTransactions = getExpenseTransactionsForCurrentMonth()
+        return expenseTransactions.reduce(0.0) { $0 - $1.signedAmount }
+    }
+    
+    //Mark
+
+    func getTotalIncomeForCurrentMonth() -> Double {
+        let incomeTransactions = getIncomeTransactionsForCurrentMonth()
+        return incomeTransactions.reduce(0.0) { $0 + $1.signedAmount }
+    }
+    
+    // MARK get balance of the currentmonth
+    func getDifferenceForCurrentMonth() -> Double {
+        let totalIncome = getTotalIncomeForCurrentMonth()
+        let totalExpense = getTotalExpenseForCurrentMonth()
+        let difference = totalIncome - totalExpense
+        return difference
     }
 
-//    func groupTransactionsBymonth() -> TransactionGroup {
-//        guard !transactions.isEmpty else { return [:] }
-//        let sortedTransactions = transactions.sorted { $0.dateParsed < $1.dateParsed }
-//        let groupedTranasctions =  TransactionGroup(grouping: sortedTransactions) { "\($0.dateParsed.formatted(.dateTime.year()))-\($0.month)" }
-//        return groupedTranasctions
-//    }
     
-//    func totalAmountInCurrentMonth() -> Decimal {
-//        let currentMonth = Date().formatted(.dateTime.month())
-//        let groupedTransactions = groupTransactionsBymonth()
-//        let currentMonthTransactions = groupedTransactions[currentMonth] ?? []
-//        let totalAmount = currentMonthTransactions.reduce(0) { $0 + $1.amount }
-//        return Decimal(totalAmount)
-//    }
-//    func monthlybalance(sortedTransactions: [Transaction]) -> String {
-//        let currentMonth = Calendar.current.component(.month, from: Date())
-//        let transactionsInCurrentMonth = sortedTransactions.filter { Calendar.current.component(.month, from: $0.date) == currentMonth }
-//        
-//        var value: Double = 0
-//        value = transactionsInCurrentMonth.reduce(0, { (partialResult, expense) -> Double in
-//            return partialResult + (expense.isExpense == true ? -expense.amount : expense.amount)
-//        })
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .currency
-//        return formatter.string(from: .init(value: value)) ?? "$0.00"
-//    }
 
-
-//    var totalAmount: Double {
-//            return transactionsInCurrentMonth().reduce(0) { $0 + $1.signedAmount }
-//        }
-//    func transactionsInCurrentMonth() -> [Transaction] {
-//           let currentMonthEndDate = Date()
-//           return sortedTransactions.filter { transaction -> Bool in
-//               let transactionDate = transaction.dateAsDate
-//               return transactionDate >= currentMonthStartDate && transactionDate <= currentMonthEndDate
-//           }
-//       }
-//    func accumulateTransactions() -> TransactionPrefixSum {
-//        
-//        print("accumateTran")
-//        
-//        guard !transactions.isEmpty else { return [] }
-//        
-//        
-//        let today = "01/28/2022".dateParse()
-//        let dateInterval = Calendar.current.dateInterval(of: .month, for: today)!
-//        print("dateInterval", dateInterval)
-//        var sum: Double = .zero
-//        var cumulativeSum = TransactionPrefixSum()
-//        
-//        
-//    }
     
     
     

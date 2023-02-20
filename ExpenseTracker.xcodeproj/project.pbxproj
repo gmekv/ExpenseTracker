@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522E1D3129A23C3200C55217 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522E1D3029A23C3200C55217 /* CardView.swift */; };
 		52507E9929814ACA00C71C82 /* ExpenseTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507E9829814ACA00C71C82 /* ExpenseTrackerApp.swift */; };
 		52507E9B29814ACA00C71C82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507E9A29814ACA00C71C82 /* ContentView.swift */; };
 		52507E9D29814ACB00C71C82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52507E9C29814ACB00C71C82 /* Assets.xcassets */; };
@@ -14,16 +15,17 @@
 		52507EA729814CC700C71C82 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507EA629814CC700C71C82 /* Extensions.swift */; };
 		52507EA9298152CD00C71C82 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507EA8298152CD00C71C82 /* TransactionModel.swift */; };
 		52507EAB2981546000C71C82 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507EAA2981546000C71C82 /* PreviewData.swift */; };
-		52507EAD2981550200C71C82 /* TransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507EAC2981550200C71C82 /* TransactionRow.swift */; };
+		52507EAD2981550200C71C82 /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507EAC2981550200C71C82 /* TransactionRowView.swift */; };
 		52507EB2298194B700C71C82 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52507EB1298194B700C71C82 /* TransactionListViewModel.swift */; };
 		52D83AA12985253D00F2DDB0 /* NewexpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D83AA02985253D00F2DDB0 /* NewexpenseView.swift */; };
 		52D83AA92987C68800F2DDB0 /* SwiftUIFontIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 52D83AA82987C68800F2DDB0 /* SwiftUIFontIcon */; };
-		52E615182982F6D0000E360C /* RecentTransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E615172982F6D0000E360C /* RecentTransactionList.swift */; };
-		52E6151A2983DA78000E360C /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E615192983DA78000E360C /* TransactionList.swift */; };
+		52E615182982F6D0000E360C /* RecentTransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E615172982F6D0000E360C /* RecentTransactionListView.swift */; };
+		52E6151A2983DA78000E360C /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E615192983DA78000E360C /* TransactionListView.swift */; };
 		52E6151D2984341A000E360C /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 52E6151C2984341A000E360C /* Collections */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		522E1D3029A23C3200C55217 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		52507E9529814ACA00C71C82 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52507E9829814ACA00C71C82 /* ExpenseTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerApp.swift; sourceTree = "<group>"; };
 		52507E9A29814ACA00C71C82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,11 +34,11 @@
 		52507EA629814CC700C71C82 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		52507EA8298152CD00C71C82 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		52507EAA2981546000C71C82 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
-		52507EAC2981550200C71C82 /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
+		52507EAC2981550200C71C82 /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		52507EB1298194B700C71C82 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		52D83AA02985253D00F2DDB0 /* NewexpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewexpenseView.swift; sourceTree = "<group>"; };
-		52E615172982F6D0000E360C /* RecentTransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionList.swift; sourceTree = "<group>"; };
-		52E615192983DA78000E360C /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
+		52E615172982F6D0000E360C /* RecentTransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionListView.swift; sourceTree = "<group>"; };
+		52E615192983DA78000E360C /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +94,11 @@
 				522E1D2F29A2373200C55217 /* Models */,
 				52D83AAA2988286900F2DDB0 /* Views */,
 				52D83AA02985253D00F2DDB0 /* NewexpenseView.swift */,
-				52E615192983DA78000E360C /* TransactionList.swift */,
-				52E615172982F6D0000E360C /* RecentTransactionList.swift */,
-				52507EAC2981550200C71C82 /* TransactionRow.swift */,
+				522E1D3029A23C3200C55217 /* CardView.swift */,
+				52E615192983DA78000E360C /* TransactionListView.swift */,
+				52E615172982F6D0000E360C /* RecentTransactionListView.swift */,
+				52507EAC2981550200C71C82 /* TransactionRowView.swift */,
 				522E1D2E29A2360200C55217 /* ViewModel */,
-				52507EA629814CC700C71C82 /* Extensions.swift */,
 				52507E9C29814ACB00C71C82 /* Assets.xcassets */,
 				52507E9E29814ACB00C71C82 /* Preview Content */,
 			);
@@ -106,6 +108,7 @@
 		52507E9E29814ACB00C71C82 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				52507EA629814CC700C71C82 /* Extensions.swift */,
 				52507E9F29814ACB00C71C82 /* Preview Assets.xcassets */,
 				52507EAA2981546000C71C82 /* PreviewData.swift */,
 			);
@@ -199,13 +202,14 @@
 			files = (
 				52D83AA12985253D00F2DDB0 /* NewexpenseView.swift in Sources */,
 				52507EAB2981546000C71C82 /* PreviewData.swift in Sources */,
-				52E6151A2983DA78000E360C /* TransactionList.swift in Sources */,
-				52E615182982F6D0000E360C /* RecentTransactionList.swift in Sources */,
+				52E6151A2983DA78000E360C /* TransactionListView.swift in Sources */,
+				52E615182982F6D0000E360C /* RecentTransactionListView.swift in Sources */,
 				52507EA9298152CD00C71C82 /* TransactionModel.swift in Sources */,
 				52507E9B29814ACA00C71C82 /* ContentView.swift in Sources */,
-				52507EAD2981550200C71C82 /* TransactionRow.swift in Sources */,
+				52507EAD2981550200C71C82 /* TransactionRowView.swift in Sources */,
 				52507EA729814CC700C71C82 /* Extensions.swift in Sources */,
 				52507EB2298194B700C71C82 /* TransactionListViewModel.swift in Sources */,
+				522E1D3129A23C3200C55217 /* CardView.swift in Sources */,
 				52507E9929814ACA00C71C82 /* ExpenseTrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -317,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

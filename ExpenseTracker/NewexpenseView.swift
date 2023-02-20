@@ -67,7 +67,7 @@ extension NewexpenseView {
             Text("Add New Income/Expense 💸")
                 .font(.title2)
                 .fontWeight(.semibold)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
             TextField("Amount", value: $newamount, format: .currency(code: "USD"))
                 .keyboardType(.numberPad)
                 .font(.system(size: 35))
@@ -123,7 +123,9 @@ extension NewexpenseView {
     private var datebac: some View {
         HStack {
             Label {
-                DatePicker("Select date", selection: $selectedDate, in: minDate...maxDate,displayedComponents: .date)
+                DatePicker("Select date", selection: $selectedDate, in: minDate...maxDate, displayedComponents: .date)
+                    .environment(\.locale, Locale(identifier: "en_US"))
+
 
                     .padding(.trailing, 75)
                 
@@ -192,5 +194,8 @@ extension NewexpenseView {
 struct NewexpenseView_Previews: PreviewProvider {
     static var previews: some View {
         NewexpenseView()
+        NewexpenseView()
+            .colorScheme(.dark)
+
     }
 }
