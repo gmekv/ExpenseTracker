@@ -1,4 +1,5 @@
 # ExpenseTracker
+MVVM, swiftUI, Combine.
 Expense tracker app that downloads the data using Combine framework from this link, and also lets users to add their own. Display on mainpage also shows income, expense and the total montly balance. 
 Currently working on swipe/delete function and connecting it to Firebase.
 
